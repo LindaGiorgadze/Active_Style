@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Style</title>
+    <style>
+        .container {
+            padding: 2%;
+            margin: 0 auto;
+            background-color: antiquewhite;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .box {
+            display: none;
+            background-color: blanchedalmond;
+            /* overflow-y: scroll; */
+            position: absolute;
+            width: 70%;
+            height: 90%;
+            border: 3px solid aquamarine;
+            border-left: 6px solid aquamarine;
+            border-right: 1px solid aquamarine;
+            border-radius: 5px;
+            right: 2px;
+            top: 50%;
+            transform: translate(0, -50%);
+            padding: 5px;
+            z-index: 9;
+        }
+        .active .box {
+            display: block;
+        }
+        .element {
+            display: flex;
+            flex-direction: row;
+            cursor: pointer;
+            margin: 10px;
+            padding: 5px 5px;
+            background-color: antiquewhite;
+            max-height: 110px;
+        }
+        .active {
+            background-color: aquamarine;
+        }
+        .element span {
+            padding: 2% 2%;
+            width: 30%;
+            margin: 10px 10px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="element active">
+            <span>Click Me 1</span>
+            <div class="box">
+                <h2>Box Title 1</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus in possimus alias eveniet deleniti cum ipsam. Temporibus quisquam, ipsam accusamus rerum voluptatum nesciunt, animi, earum fuga cumque omnis iste placeat.</p>
+            </div>
+        </div>
+        <div class="element ">
+            <span>Click Me 2</span>
+            <div class="box">
+                <h2>Box Title 2</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus in possimus alias eveniet deleniti cum ipsam. Temporibus quisquam, ipsam accusamus rerum voluptatum nesciunt, animi, earum fuga cumque omnis iste placeat.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, animi, cupiditate eos quae architecto ipsa, porro accusamus modi qui doloremque ex ut ratione eligendi harum enim aspernatur hic asperiores consequuntur.
+                </p>
+            </div>
+        </div>
+        <div class="element ">
+            <span>Click Me 3</span>
+            <div class="box">
+                <h2>Box Title 3</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus in possimus alias eveniet deleniti cum ipsam. Temporibus quisquam, ipsam accusamus rerum voluptatum nesciunt, animi, earum fuga cumque omnis iste placeat.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus consequatur ipsa fugit. Ipsam nihil dicta quo similique reprehenderit veritatis odio est voluptatibus expedita porro. Explicabo, porro ex. Nisi, provident accusamus.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque nostrum expedita est voluptatem animi, non magni veritatis porro repellat? Error, cupiditate repellat. Architecto atque, provident aut laborum tempore modi recusandae.
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const element = document.querySelectorAll('.element');
+        element.forEach(function(el, key){                
+            el.addEventListener('click', function () {
+                el.classList.add("active");
+                    
+                element.forEach(function(ell, index){
+                    if(key !== index) {
+                        ell.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
